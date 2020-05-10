@@ -25,10 +25,19 @@ router.use(async function (req, res, next) {
 router.get("/searchMovies", async function (req, res, next) {
     if (req['query'].movieTitle) {
         const omdb_response = await omdb.getMovieSearch(req['query'].movieTitle);
-        console.log(omdb_response);
-        // console.log(omdb_response)
         //!TODO insert error respone for non movie
         res.json(omdb_response).status(200)
+    } else {
+        res.json({ message: "'movieTitle' parameter not found" })
+    }
+})
+router.get("/movieInfo", async function (req, res, next) {
+    if (req['query'].movieTitle) {
+        const omdb_response = await omdb.getMovieInformation(req['query'].movieTitle);
+        //!TODO insert error respone for non movie
+        res.json(omdb_response).status(200)
+    } else {
+        res.json({ message: "'movieTitle' parameter not found" })
     }
 })
 router.post("/newMovie", async function (req, res, next) {
