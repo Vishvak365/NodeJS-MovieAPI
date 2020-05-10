@@ -15,7 +15,9 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.13",
     "njwt": "^1.0.0",
-    "nodemon": "^2.0.3",
     "sleep": "^6.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }

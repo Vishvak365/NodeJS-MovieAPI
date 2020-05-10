@@ -21,13 +21,6 @@ router.get("/create", function (req, res) {
         'password': "A*()u2jol"
     }
     );
-    /**
-     *     username: { type: String, required: true, unique: true },
-    email: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
-    age: { type: Number, required: true },
-    password: { type: String, required: true }
-     */
     user.save(function (err, user) {
         if (err)
             res.json(err).status(400)
@@ -36,20 +29,4 @@ router.get("/create", function (req, res) {
         }
     });
 })
-// router.get("/", async (req, res) => {
-//     if (req['headers'].authorization && req['headers'].authorization.startsWith("Bearer ")) {
-//         const token = req['headers'].authorization.split(" ")[1] //Splits bearer and token into array
-//         const verified = await verifiyJWT(token);
-//         if (verified) {
-//             res.json(verified).status(200);
-//         } else {
-//             res.json({ message: "Key expired or tampered with" }).status(401);
-//         }
-//     } else {
-//         res.json({
-//             message: "No auth found or improper format, proper format below",
-//             properFormat: [{ authorization: "Bearer <AUTH_TOKEN>" }]
-//         }).status(401).send();
-//     }
-// })
 module.exports = router
