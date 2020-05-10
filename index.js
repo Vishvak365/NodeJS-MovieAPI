@@ -9,7 +9,7 @@ require('./ExternelAPIs/Connection')
 app.use('/api/auth', auth)
 app.use('/api/user', user)
 app.listen(port, () => {
-    console.log(`Listening on http://localhost:${port}`)
-    
+    // console.log(`Listening on http://localhost:${port}`)
+    console.log("Started application");
     // test();
 });
