@@ -24,7 +24,7 @@ async function getMovieSearch(movieTitle) {
 }
 /**s
  * 
- * @param {*} movieTitle Tile of the movie
+ * @param {string} movieTitle Tile of the movie
  * @returns {json} Returns exact details of movie with exact name
  */
 async function getMovieInformation(movieTitle) {
