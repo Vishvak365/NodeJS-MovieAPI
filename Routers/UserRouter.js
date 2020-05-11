@@ -3,24 +3,29 @@ var router = express.Router()
 const mongoose = require('mongoose')
 const userSchema = require('../Schemas/userSchema.js')
 const User = mongoose.model('userScheme', userSchema, 'user')
-var omdb = require('../ExternelAPIs/omdbAPI')
-var JWT = require('../Security/JWT')
-
+const omdb = require('../ExternelAPIs/omdbAPI')
+const JWT = require('../Security/JWT')
+const Authorize = require('../Security/Authentication')
 router.use(async function (req, res, next) {
-    if (req['headers'].authorization && req['headers'].authorization.startsWith("Bearer ")) {
-        const token = req['headers'].authorization.split(" ")[1] //Splits bearer and token into array
-        const verified = await JWT.VerifyJWT(token);
-        if (verified) {
-            next();
-        } else {
-            res.json({ message: "Key expired or tampered with" }).status(401);
-        }
-    } else {
-        res.json({
-            message: "No auth found or improper format, proper format below",
-            properFormat: [{ authorization: "Bearer <AUTH_TOKEN>" }]
-        }).status(401).send();
+    const authorization = Authorize.checkJWT(req);
+    if (authorization[0]) next();
+    else {
+        res.json(authorization[1]).status(401).send()
     }
+    // if (req['headers'].authorization && req['headers'].authorization.startsWith("Bearer ")) {
+    //     const token = req['headers'].authorization.split(" ")[1] //Splits bearer and token into array
+    //     const verified = await JWT.VerifyJWT(token);
+    //     if (verified) {
+    //         next();
+    //     } else {
+    //         res.json({ message: "Key expired or tampered with" }).status(401);
+    //     }
+    // } else {
+    //     res.json({
+    //         message: "No auth found or improper format, proper format below",
+    //         properFormat: [{ authorization: "Bearer <AUTH_TOKEN>" }]
+    //     }).status(401).send();
+    // }
 })
 /**
  * @api {get} /api/user/searchMovies Movie Search
