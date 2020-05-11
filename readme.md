@@ -1,5 +1,6 @@
 <h1>NodeJS Movie API</h1>
 <h2>This is an API server built on node.js with JWT token authentication</h2>
+<h2><a href="https://vishvak365.github.io/NodeJS-MovieAPI/docs/">DOCUMENTATION</a>
 <p>To Run locally </p>
 <ul>
 <li><code>docker build -t node-app .
