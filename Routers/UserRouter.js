@@ -31,6 +31,7 @@ router.get("/searchMovies", async function (req, res, next) {
         res.json({ message: "'movieTitle' parameter not found" })
     }
 })
+
 router.get("/movieInfo", async function (req, res, next) {
     if (req['query'].movieTitle) {
         const omdb_response = await omdb.getMovieInformation(req['query'].movieTitle);

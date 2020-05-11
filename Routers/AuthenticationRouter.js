@@ -5,6 +5,30 @@ const mongoose = require('mongoose')
 const userSchema = require('../Schemas/userSchema.js')
 const User = mongoose.model('userScheme', userSchema, 'user')
 
+/**
+ * @api {get} /api/auth/login Request an authorization token (JWT)
+ * @apiName GetUserJWT
+ * @apiGroup Authentication
+ *
+ * @apiParam {String} username The unique username for a user
+ * @apiParam {String} password Password for user
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "Authorization": "bearer <token>",
+ *     }
+ * @apiErrorExample {json} Error-Response: If username or password param not found
+ *     HTTP/1.1 400 Not Found
+ *     {
+ *       "error": "Username or password param not found"
+ *     }
+ * @apiErrorExample {json} Error-Response: If username or password param not found
+ *     HTTP/1.1 400 Not Found
+ *     {
+ *       "error": "Username or password param not found"
+ *     }
+ */
 router.get("/login", function (req, res) {
     const query = req['query']
     if (!query.username || !query.password)

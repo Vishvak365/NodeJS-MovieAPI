@@ -13,3 +13,4 @@ app.listen(port, () => {
     console.log("Started application");
     // test();
 });
+//apidoc -e ./node_modules/
