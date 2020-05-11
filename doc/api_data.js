@@ -79,5 +79,92 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "./Routers/AuthenticationRouter.js",
     "groupTitle": "Authentication"
+  },
+  {
+    "deprecated": {
+      "content": "Implementation of getting movie info with IMDB-id coming"
+    },
+    "type": "get",
+    "url": "/api/user/movieInfo",
+    "title": "Movie Info",
+    "version": "0.1.0",
+    "description": "<p>Get info on a particular movie with exact title</p>",
+    "name": "MovieInfo",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "movieTitle",
+            "description": "<p>Movie to search for</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n {\n        \"Title\": \"The Martian\",\n        \"Year\": \"2015\",\n        \"Rated\": \"PG-13\",\n        \"Released\": \"02 Oct 2015\",\n        \"Runtime\": \"144 min\",\n        \"Genre\": \"Adventure, Drama, Sci-Fi\",\n        \"Director\": \"Ridley Scott\",\n        ...\n    }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response: If search yields no results",
+          "content": "HTTP/1.1 400 Not Found\n{\n  {\n      \"Response\": \"False\",\n      \"Error\": \"Movie not found!\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./Routers/UserRouter.js",
+    "groupTitle": "User"
+  },
+  {
+    "type": "get",
+    "url": "/api/user/searchMovies",
+    "title": "Movie Search",
+    "description": "<p>Search for a movie with a title and get an array of movies matching title</p>",
+    "name": "SearchMovies",
+    "group": "User",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "movieTitle",
+            "description": "<p>Movie to search for</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n \"Search\": [\n                {\n                    \"Title\": \"The Martian\",\n                    \"Year\": \"2015\",\n                    \"imdbID\": \"tt3659388\",\n                    \"Type\": \"movie\",\n                    \"Poster\": \"https://m.media-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg\"\n                },\n                {\n                    \"Title\": \"Martian Child\",\n                    \"Year\": \"2007\",\n                    \"imdbID\": \"tt0415965\",\n                    \"Type\": \"movie\",\n                    \"Poster\": \"https://m.media-amazon.com/images/M/MV5BMjExMDAxNzYzNV5BMl5BanBnXkFtZTcwMDQ3MDU1MQ@@._V1_SX300.jpg\"\n                },\n                ...\n            ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response: If search yields no results",
+          "content": "HTTP/1.1 400 Not Found\n{\n  {\n      \"Response\": \"False\",\n      \"Error\": \"Movie not found!\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./Routers/UserRouter.js",
+    "groupTitle": "User"
   }
 ] });
