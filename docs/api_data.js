@@ -1,33 +1,5 @@
 define({ "api": [
   {
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "varname1",
-            "description": "<p>No type.</p>"
-          },
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "varname2",
-            "description": "<p>With type.</p>"
-          }
-        ]
-      }
-    },
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "./doc/main.js",
-    "group": "/home/vishvak/Documents/NodeJS-MovieAPI/doc/main.js",
-    "groupTitle": "/home/vishvak/Documents/NodeJS-MovieAPI/doc/main.js",
-    "name": ""
-  },
-  {
     "type": "get",
     "url": "/api/auth/login",
     "title": "Request an authorization token (JWT)",
